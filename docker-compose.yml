@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  api:
+    container_name: vtex_api
+    image: node:10
+    networks:
+      - base
+      - mongo
+    ports:
+      - "5000:5000"
+    command: sh -c "npm i && npm run start"
+    depends_on:
+      - mongo
+    working_dir: /app
+    volumes:
+      - ./vtex-megahack-api:/app
+    environment:
+      NODE_ENV: development
+  client:
+    container_name: vtex_client
+    image: node:10
+    networks:
+      - base
+      - mongo
+    ports:
+      - "3000:3000"
+    command: sh -c "npm i && npm run start"
+    depends_on:
+      - mongo
+    working_dir: /app
+    volumes:
+      - ./vtex-megahack-client:/app
+    environment:
+      NODE_ENV: development
+    stdin_open: true
+  mongo:
+    container_name: vtex_mongodb
+    image: mongo
+    networks:
+      - mongo
+    volumes:
+      - mongo:/data/db
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_DATA_DIR: /data/db
+
+networks:
+  base:
+  mongo:
+
+volumes:
+  mongo:
