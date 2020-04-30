@@ -1,6 +1,6 @@
-[submodule "vtex-megahack-api"]
-	path = vtex-megahack-api
-	url = https://github.com/Lucasilva999/vtex-megahack-api.git
 [submodule "vtex-megahack-client"]
 	path = vtex-megahack-client
 	url = https://github.com/Lucasilva999/vtex-megahack-client.git
+[submodule "vtex-megahack-api"]
+	path = vtex-megahack-api
+	url = https://github.com/Lucasilva999/vtex-megahack-api.git
